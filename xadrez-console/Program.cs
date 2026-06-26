@@ -1,19 +1,39 @@
 ﻿using xadrez;
 using xadrez_console;
 using xadrez_console.tabuleiro;
+using xadrez_console.xadrez;
 
 try
 {
-	Tabuleiro tab = new Tabuleiro(8, 8);
+	PartidaDeXadrez partida = new PartidaDeXadrez();
 
-	tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
-	tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 3));
-	tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(1,5));
-	tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 4));
-	tab.colocarPeca(new Torre(tab, Cor.Branca), new Posicao(2, 2));
+	while (!partida.terminada)
+	{
+		try
+		{
+			Console.Clear();
+			Tela.imprimirTabuleiro(partida.Tab);
+			
+			System.Console.WriteLine();
+			Console.Write("Origem: ");
+			Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
 
-	Tela.imprimirTabuleiro(tab);
+			// bool[,] posicoesPossiveis = partida.Tab.peca(origem).movimentosPossiveis();
 
+			// Console.Clear();
+			// Tela.imprimirTabuleiro(partida.Tab, posicoesPossiveis);
+
+			Console.Write("Destino: ");
+			Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
+
+			partida.executaMovimento(origem, destino);
+		}
+		catch (TabuleiroException e)
+		{
+			Console.WriteLine(e.Message);
+			Console.ReadLine();
+		}
+	}
 }
 catch (TabuleiroException e)
 {
