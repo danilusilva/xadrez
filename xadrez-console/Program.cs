@@ -1,27 +1,24 @@
 ﻿using xadrez;
 using xadrez_console;
 using xadrez_console.tabuleiro;
-using xadrez_console.xadrez;
 
-//try
-//{
-//Tabuleiro tab = new Tabuleiro(8, 8);
+try
+{
+	Tabuleiro tab = new Tabuleiro(8, 8);
 
-//tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
-//tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 7));
-//tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(7, 5));
+	tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
+	tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 3));
+	tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(1,5));
+	tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 4));
+	tab.colocarPeca(new Torre(tab, Cor.Branca), new Posicao(2, 2));
 
-//Tela.imprimirTabuleiro(tab);
-PosicaoXadrez pos = new PosicaoXadrez('a', 7);
-Console.WriteLine(pos);
+	Tela.imprimirTabuleiro(tab);
 
+}
+catch (TabuleiroException e)
+{
 
-//}
-//catch (TabuleiroException e)
-//{
-//    Console.WriteLine(e.Message);
-//}
+    Console.WriteLine(e.Message);
+}
 
 Console.ReadLine();
-
-
